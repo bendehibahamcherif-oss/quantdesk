@@ -140,7 +140,9 @@ HTML_FILE = find_html()
 def index():
     if not HTML_FILE:
         return "HTML non trouvé dans " + HTML_DIR, 404
-    return send_from_directory(HTML_DIR, HTML_FILE)
+    response = send_from_directory(HTML_DIR, HTML_FILE)
+response.headers["Content-Type"] = "text/html; charset=utf-8"
+return response
 
 @app.route("/<path:filename>")
 def static_files(filename):
