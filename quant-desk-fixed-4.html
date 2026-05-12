@@ -741,7 +741,7 @@ function App() {
   }, [signals, vix]);
 
   const addTicker = () => {
-    const t = newTicker.trim().toUpperCase().replace(/[^A-Z^.]/g, "");
+    const t = newTicker.trim().toUpperCase().replace(/[^A-Z0-9=-.^]/g, '');
     if (t && !tickers.includes(t)) { setTickers(prev => [...prev, t]); setNewTicker(""); }
   };
   const removeTicker = t => {
@@ -800,7 +800,7 @@ function App() {
         {/* Controls */}
         <div style={{ display: "flex", gap: 8, marginBottom: 12, alignItems: "center", flexWrap: "wrap" }}>
           <div style={{ display: "flex", gap: 6 }}>
-            <input value={newTicker} onChange={e => setNewTicker(e.target.value.toUpperCase())} onKeyDown={e => e.key === "Enter" && addTicker()} onFocus={() => setInputFocus(true)} onBlur={() => setInputFocus(false)} placeholder="TICKER" maxLength={6}
+            <input value={newTicker} onChange={e => setNewTicker(e.target.value.toUpperCase())} onKeyDown={e => e.key === "Enter" && addTicker()} onFocus={() => setInputFocus(true)} onBlur={() => setInputFocus(false)} placeholder="TICKER" maxLength={12}
               style={{ background: T.surface, color: T.white, fontFamily: "monospace", border: `1px solid ${inputFocus ? T.borderHover : T.border}`, padding: "7px 12px", borderRadius: 5, fontSize: 13, width: 100 }} />
             <button onClick={addTicker} style={{ background: T.blue + "18", border: `1px solid ${T.blue}44`, color: T.blue, padding: "7px 14px", borderRadius: 5, cursor: "pointer", fontSize: 11, fontWeight: 700, letterSpacing: 1 }}>+ AJOUTER</button>
           </div>
