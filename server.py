@@ -141,8 +141,8 @@ def index():
     if not HTML_FILE:
         return "HTML non trouvé dans " + HTML_DIR, 404
     response = send_from_directory(HTML_DIR, HTML_FILE)
-response.headers["Content-Type"] = "text/html; charset=utf-8"
-return response
+    response.headers["Content-Type"] = "text/html; charset=utf-8"
+    return response
 
 @app.route("/<path:filename>")
 def static_files(filename):
