@@ -96,7 +96,7 @@ const T = {
 // ── DATA FETCHING via local Python server (yfinance / Yahoo Finance) ─────────
 const MARKET = ["SPY","QQQ","^VIX"];
 const REFRESH_MS = 30000;
-const API = 'http://localhost:8080/api';
+const API = '/api';
 
 async function yfChart(ticker, range, ivl) {
   if(!ivl) ivl='1d';
